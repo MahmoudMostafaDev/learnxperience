@@ -1,9 +1,10 @@
-learnXperience
+# LearnXperience
+
 LearnXperience is an innovative eLearning platform designed to enhance the learning journey by providing an immersive and interactive educational experience.
 
-GitHub: https://github.com/Collaborative-Open-Source-Projects/learnxperience
-Deployment: https://learnxperience.vercel.app/
-Hackathon: https://hack49-2024.devpost.com/
+- **GitHub**: [https://github.com/Collaborative-Open-Source-Projects/learnxperience](https://github.com/Collaborative-Open-Source-Projects/learnxperience)
+- **Deployment**: [https://learnxperience.vercel.app/](https://learnxperience.vercel.app/)
+- **Hackathon**: [https://hack49-2024.devpost.com/](https://hack49-2024.devpost.com/)
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
@@ -29,10 +30,10 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 
 To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [Next.js Documentation](https://nextjs.org/docs) - Learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - An interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/)—your feedback and contributions are welcome!
 
 ## Deploy on Vercel
 
