@@ -14,7 +14,7 @@ const Header = () => {
     return (
         <>
             {/* Main header */}
-            <header className="sticky top-0 z-20 bg-gray-50">
+            <header className="sticky top-0 z-20 bg-gray-50 shadow-md">
                 <div className="p-4 flex justify-between items-center">
                     <h1 className="text-xl font-bold text-purple-600">LearnXperience</h1>
 
