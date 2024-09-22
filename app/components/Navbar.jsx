@@ -5,7 +5,7 @@ import { Search, ChevronDown } from 'lucide-react';
 
 const Header = () => {
     const [isPopoverOpen, setIsPopoverOpen] = useState(false);
-    const [isLoggedIn, setIsLoggedIn] = useState(true);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     const handleProfileClick = () => {
         setIsPopoverOpen(!isPopoverOpen);
