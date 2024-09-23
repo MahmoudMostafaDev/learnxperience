@@ -1,6 +1,6 @@
-'use client'
+'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Search, ChevronDown } from 'lucide-react';
 
 
@@ -14,16 +14,28 @@ const themes = [
 
 const Header = () => {
     const [isPopoverOpen, setIsPopoverOpen] = useState(false);
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(true);
+    const [isSticky, setIsSticky] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setIsSticky(window.scrollY > 30);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
 
     const handleProfileClick = () => {
-        setIsPopoverOpen(!isPopoverOpen);
+        setIsPopoverOpen(prev => !prev);
     };
 
     return (
         <>
             {/* Main header */}
-            <header className="sticky top-0 z-20 bg-gray-50 shadow-md">
+            <header className={`sticky top-0 z-20 bg-gray-50 ${isSticky ? 'shadow-md' : ''}`}>
                 <div className="p-4 flex justify-between items-center">
                     <h1 className="text-xl font-bold text-purple-600">LearnXperience</h1>
                  
@@ -44,6 +56,8 @@ const Header = () => {
                                 <button
                                     className="w-10 h-10 bg-purple-500 rounded-full flex items-center justify-center cursor-pointer"
                                     onClick={handleProfileClick}
+                                    aria-haspopup="true"
+                                    aria-expanded={isPopoverOpen}
                                 >
                                     <ChevronDown className="text-white" size={16} />
                                 </button>
@@ -55,26 +69,18 @@ const Header = () => {
                                             <p className="text-sm text-gray-500">@username</p>
                                         </div>
                                         <hr className="border-gray-200" />
-                                        <hr className="border-gray-200" />
                                         <div className="p-2">
-                                            <button className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-purple-100">
-                                                Profile
-                                            </button>
-                                            <button className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-purple-100">
-                                                Settings
-                                            </button>
-                                            <button className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-purple-100">
-                                                Support
-                                            </button>
-                                            <button className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-purple-100">
-                                                Sign out
-                                            </button>
+                                            {['Profile', 'Settings', 'Support', 'Sign out'].map(item => (
+                                                <button key={item} className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-purple-100">
+                                                    {item}
+                                                </button>
+                                            ))}
                                         </div>
                                         <hr className="border-gray-300" />
                                         <div className="p-2 text-center text-xs text-gray-500">
-                                            <p>About</p>
-                                            <p>Privacy</p>
-                                            <p>Terms</p>
+                                            {['About', 'Privacy', 'Terms'].map(item => (
+                                                <p key={item}>{item}</p>
+                                            ))}
                                         </div>
                                     </div>
                                 )}
