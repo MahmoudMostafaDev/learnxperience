@@ -3,6 +3,15 @@
 import React, { useState } from 'react';
 import { Search, ChevronDown } from 'lucide-react';
 
+
+
+const themes = [
+    { name: 'light', label: 'Light Theme' },
+    { name: 'dark', label: 'Dark Theme' },
+    { name: 'blue', label: 'Blue Theme' },
+    { name: 'green', label: 'Green Theme' },
+  ];
+
 const Header = () => {
     const [isPopoverOpen, setIsPopoverOpen] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -17,6 +26,7 @@ const Header = () => {
             <header className="sticky top-0 z-20 bg-gray-50 shadow-md">
                 <div className="p-4 flex justify-between items-center">
                     <h1 className="text-xl font-bold text-purple-600">LearnXperience</h1>
+                 
 
                     <nav className="flex items-center space-x-4">
                         {/* Search Box */}
