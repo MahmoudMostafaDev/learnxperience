@@ -19,7 +19,7 @@ html, body {
   --text-color: #ffffff;
 }
 
-.theme-ocean {
+/* .theme-ocean {
   --bg-color: #2e8b57;
   --text-color: #ffffff;
 }
@@ -27,7 +27,7 @@ html, body {
 .theme-desert {
   --bg-color: #edc9af;
   --text-color: #000000;
-}
+} */
 
 body {
   background-color: var(--bg-color);
@@ -36,8 +36,8 @@ body {
 
 .theme-light-box { background-color: #ffffff; border: 1px solid #ccc; }
 .theme-dark-box { background-color: #000000; }
-.theme-ocean-box { background-color: #2e8b57; }
-.theme-desert-box { background-color: #edc9af; }
+/* .theme-ocean-box { background-color: #2e8b57; }
+.theme-desert-box { background-color: #edc9af; } */
 
 .theme-color-box {
   width: 20px;

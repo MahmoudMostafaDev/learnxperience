@@ -2,8 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Search, ChevronDown } from 'lucide-react';
-
-
+import ThemeDropdown from './ThemeDropdown';
 
 const themes = [
     { name: 'light', label: 'Light Theme' },
@@ -35,7 +34,7 @@ const Header = () => {
     return (
         <>
             {/* Main header */}
-            <header className={`sticky top-0 z-20 bg-gray-50 ${isSticky ? 'shadow-md' : ''}`}>
+            <header className={`sticky top-0 z-20 bg-gray-50 theme-dark:bg-slate-800 ${isSticky ? 'shadow-md' : ''}`}>
                 <div className="p-4 flex justify-between items-center">
                     <h1 className="text-xl font-bold text-purple-600">LearnXperience</h1>
                  
@@ -95,6 +94,7 @@ const Header = () => {
                                 </button>
                             </div>
                         )}
+                        <ThemeDropdown />
                     </nav>
                 </div>
                 <hr className="border-t border-gray-200" />

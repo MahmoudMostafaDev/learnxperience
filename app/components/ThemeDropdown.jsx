@@ -4,8 +4,8 @@ import { useState, useEffect } from 'react';
 const themes = [
   { name: 'light', cssClass: 'theme-light', colorBoxClass: 'theme-light-box', bgColor: '#ffffff' },
   { name: 'dark', cssClass: 'theme-dark', colorBoxClass: 'theme-dark-box', bgColor: '#000000' },
-  { name: 'ocean', cssClass: 'theme-ocean', colorBoxClass: 'theme-ocean-box', bgColor: '#2e8b57' },
-  { name: 'desert', cssClass: 'theme-desert', colorBoxClass: 'theme-desert-box', bgColor: '#edc9af' },
+  // { name: 'ocean', cssClass: 'theme-ocean', colorBoxClass: 'theme-ocean-box', bgColor: '#2e8b57' },
+  // { name: 'desert', cssClass: 'theme-desert', colorBoxClass: 'theme-desert-box', bgColor: '#edc9af' },
 ];
 
 export default function ThemeDropdown() {
@@ -46,7 +46,7 @@ export default function ThemeDropdown() {
 
       {/* Dropdown menu */}
       {dropdownOpen && (
-        <div className="absolute bg-white shadow-lg border border-gray-300 mt-2 rounded-md w-48">
+        <div className="absolute  -ml-3  bg-white shadow-lg border border-gray-300 mt-2 rounded-md w-16">
           {themes.map((t) => (
             <div
               key={t.name}
@@ -54,10 +54,10 @@ export default function ThemeDropdown() {
                 handleThemeChange(t.name);
                 setDropdownOpen(false); // Close dropdown after selection
               }}
-              className="flex items-center cursor-pointer px-4 py-2 hover:bg-gray-100"
+              className="flex items-center justify-center cursor-pointer  py-2 hover:bg-gray-100"
             >
               <span className={`theme-color-box ${t.colorBoxClass} mr-2`}></span>
-              <span className="capitalize">{t.name}</span>
+             
             </div>
           ))}
         </div>
