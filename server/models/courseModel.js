@@ -5,5 +5,6 @@ const courseSchema = new mongoose.Schema({
     description: { type: String, required: true },
 }, { timestamps: true });
 
-export const Course = mongoose.model("Course", courseSchema);
+const Course = mongoose.model("Course", courseSchema);
 
+export default Course;
