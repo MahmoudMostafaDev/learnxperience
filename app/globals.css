@@ -1,27 +1,48 @@
+/* Import Tailwind base, components, and utilities */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.theme-light {
+  --bg-color: #ffffff;
+  --text-color: #000000;
 }
+
+.theme-dark {
+  --bg-color: #000000;
+  --text-color: #ffffff;
+}
+
+/* .theme-ocean {
+  --bg-color: #2e8b57;
+  --text-color: #ffffff;
+}
+
+.theme-desert {
+  --bg-color: #edc9af;
+  --text-color: #000000;
+} */
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.theme-light-box { background-color: #ffffff; border: 1px solid #ccc; }
+.theme-dark-box { background-color: #000000; }
+/* .theme-ocean-box { background-color: #2e8b57; }
+.theme-desert-box { background-color: #edc9af; } */
+
+.theme-color-box {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-right: 8px;
+  display: inline-block;
 }

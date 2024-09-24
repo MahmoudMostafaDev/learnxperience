@@ -7,11 +7,20 @@ module.exports = {
   ],
   theme: {
     extend: {
+      // Using CSS variables for dynamic themes
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addVariant }) {
+      // Adding custom variants for theme-based styling
+      addVariant('theme-light', '.theme-light &');
+      addVariant('theme-dark', '.theme-dark &');
+      addVariant('theme-ocean', '.theme-ocean &');
+      addVariant('theme-desert', '.theme-desert &');
+    },
+  ],
 };
