@@ -6,4 +6,6 @@ const subscriberSchema = new mongoose.Schema({
     unsubscribed: { type: Boolean, default: false } // Track if the user has unsubscribed
   });
 
-export const Subscriber = mongoose.model("Subscriber", subscriberSchema);
+const Subscriber = mongoose.model("Subscriber", subscriberSchema);
+
+export default Subscriber;
