@@ -1,6 +1,7 @@
 import nodemailer from 'nodemailer';
+import generateEmailTemplate from './emailTemplate.js';
 
-export const sendEmail = async (to, subject, text) => {
+export const sendEmail = async (to, subject, courseTitle, courseDescription) => {
   try {
     let transporter = nodemailer.createTransport({
       service: 'gmail', 
@@ -10,11 +11,13 @@ export const sendEmail = async (to, subject, text) => {
       },
     });
 
+    const htmlContent = generateEmailTemplate(courseTitle, courseDescription);
+    
     let mailOptions = {
       from: process.env.EMAIL_USER,
       to, // Recipient email(s)
-      subject, // Email subject
-      text, // Email body
+      subject,
+      html: htmlContent
     };
 
     // Send email
