@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Search, ChevronDown } from 'lucide-react';
+import { Search } from 'lucide-react';
+import Image from 'next/image';
 
 const Header = () => {
     const [isPopoverOpen, setIsPopoverOpen] = useState(false);
@@ -43,14 +44,16 @@ const Header = () => {
                         {isLoggedIn ? (
                             // Profile Dropdown
                             <div className="relative">
-                                <button
+                                <div
                                     className="w-10 h-10 bg-purple-500 rounded-full flex items-center justify-center cursor-pointer"
                                     onClick={handleProfileClick}
                                     aria-haspopup="true"
                                     aria-expanded={isPopoverOpen}
                                 >
-                                    <ChevronDown className="text-white" size={16} />
-                                </button>
+                                    {/* <Image
+                                            src={ }
+                                        /> */}
+                                </div>
 
                                 {isPopoverOpen && (
                                     <div className="absolute right-0 mt-2 w-56 bg-white border border-gray-300 rounded-lg z-10">
