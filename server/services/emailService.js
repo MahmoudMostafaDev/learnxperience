@@ -12,10 +12,30 @@ export const emailService = {
         sendEmail(
           subscriber.email,
           `New Course: ${courseTitle}`,
-          `A new course "${courseTitle}" has been added. Description: ${courseDescription}.`
+          'course',
+          courseTitle,
+          courseDescription
         );
       });
-
+    
+      console.log('Emails queued successfully');
+    } catch (error) {
+      console.error('Error sending new course emails:', error);
+    }
+  },
+  sendWelcomeEmails: async (email) => {
+    try {
+      // Fetch all subscribers
+      const subscriber = await Subscriber.findOne({ email });
+      
+      // Send an email to each subscriber
+      
+        sendEmail(
+           subscriber.email,
+          `You're In! Welcome to Our Newsletter!:`,
+          'welcome',
+        );
+    
       console.log('Emails queued successfully');
     } catch (error) {
       console.error('Error sending new course emails:', error);

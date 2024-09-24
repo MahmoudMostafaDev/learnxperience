@@ -1,7 +1,8 @@
 import nodemailer from 'nodemailer';
 import generateEmailTemplate from './emailTemplate.js';
+import welcomeEmailTemplate from './welcomeEmailTemplate.js';
 
-export const sendEmail = async (to, subject, courseTitle, courseDescription) => {
+export const sendEmail = async (to, subject, templateType, courseTitle, courseDescription) => {
   try {
     let transporter = nodemailer.createTransport({
       service: 'gmail', 
@@ -11,7 +12,16 @@ export const sendEmail = async (to, subject, courseTitle, courseDescription) => 
       },
     });
 
-    const htmlContent = generateEmailTemplate(courseTitle, courseDescription);
+    let htmlContent;
+
+    // Use the appropriate template based on the type
+    if (templateType === 'welcome') {
+      htmlContent = welcomeEmailTemplate();
+    } else if (templateType === 'course') {
+      htmlContent = generateEmailTemplate(courseTitle, courseDescription);
+    } else {
+      throw new Error('Invalid template type provided');
+    }
     
     let mailOptions = {
       from: process.env.EMAIL_USER,
