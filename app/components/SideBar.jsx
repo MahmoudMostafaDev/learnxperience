@@ -16,7 +16,7 @@ export default function SideBar() {
 
     return (
         <aside
-            className="flex flex-col items-start h-full space-y-6 p-5 transition-width duration-300 ease-in-out hover:w-64 w-20 bg-white text-gray-800 border-r border-gray-300"
+            className="flex flex-col items-start h-full space-y-6 p-5 transition-width duration-300 ease-in-out hover:w-64 min-w-24 bg-white text-gray-800 border-r border-gray-300"
             onMouseEnter={() => setIsHover(true)}
             onMouseLeave={() => setIsHover(false)}
         >
