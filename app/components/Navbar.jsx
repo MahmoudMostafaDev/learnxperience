@@ -1,8 +1,17 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Search } from 'lucide-react';
+import { Search, ChevronDown } from 'lucide-react';
+import ThemeDropdown from './ThemeDropdown';
 import Image from 'next/image';
+import placeholderImage from '../public/images/testimonialIcon-01.jpg'
+
+const themes = [
+    { name: 'light', label: 'Light Theme' },
+    { name: 'dark', label: 'Dark Theme' },
+    { name: 'blue', label: 'Blue Theme' },
+    { name: 'green', label: 'Green Theme' },
+];
 
 const Header = () => {
     const [isPopoverOpen, setIsPopoverOpen] = useState(false);
@@ -27,10 +36,9 @@ const Header = () => {
     return (
         <>
             {/* Main header */}
-            <header className={`sticky top-0 z-20 bg-gray-50 ${isSticky ? 'shadow-md' : ''}`}>
+            <header className={`sticky top-0 z-20 bg-gray-50 theme-dark:bg-slate-800 ${isSticky ? 'shadow-md' : ''}`}>
                 <div className="p-4 flex justify-between items-center">
                     <h1 className="text-xl font-bold text-purple-600">LearnXperience</h1>
-
                     <nav className="flex items-center space-x-4">
                         {/* Search Box */}
                         <div className="relative">
@@ -44,17 +52,22 @@ const Header = () => {
                         {isLoggedIn ? (
                             // Profile Dropdown
                             <div className="relative">
-                                <div
+                                <button
                                     className="w-10 h-10 bg-purple-500 rounded-full flex items-center justify-center cursor-pointer"
                                     onClick={handleProfileClick}
                                     aria-haspopup="true"
                                     aria-expanded={isPopoverOpen}
                                 >
-                                    {/* <Image
-                                            src={ }
-                                        /> */}
-                                </div>
-
+                                    <div className="w-full h-full rounded-full overflow-hidden">
+                                        <Image
+                                            src={placeholderImage}
+                                            alt="Profile"
+                                            className="object-cover"
+                                            width={40}
+                                            height={40}
+                                        />
+                                    </div>
+                                </button>
                                 {isPopoverOpen && (
                                     <div className="absolute right-0 mt-2 w-56 bg-white border border-gray-300 rounded-lg z-10">
                                         <div className="p-4">
@@ -88,6 +101,7 @@ const Header = () => {
                                 </button>
                             </div>
                         )}
+                        <ThemeDropdown />
                     </nav>
                 </div>
                 <hr className="border-t border-gray-200" />
