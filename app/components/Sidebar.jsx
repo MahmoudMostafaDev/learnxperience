@@ -16,14 +16,14 @@ export default function SideBar() {
 
     return (
         <aside
-            className="flex flex-col items-start h-full space-y-6 p-5 transition-width duration-300 ease-in-out hover:w-64 w-24 bg-white text-gray-800 border-r border-gray-300"
+            className="flex flex-col items-start h-full space-y-6 p-5 transition-width duration-300 ease-in-out hover:w-64 w-22 bg-white text-gray-800 border-r border-gray-300"
             onMouseEnter={() => setIsHover(true)}
             onMouseLeave={() => setIsHover(false)}
         >
             {menuItems.map((item, index) => (
                 <div
                     key={index}
-                    className="flex items-center space-x-2 w-full p-2 rounded-md transition-colors duration-300 ease-in-out hover:bg-gray-200"
+                    className="flex items-center space-x-2 w-full p-2 rounded-md hover:bg-purple-100"
                 >
                     {item.icon}
                     {isHover ? (
