@@ -58,16 +58,16 @@ const Header = () => {
                                     aria-haspopup="true"
                                     aria-expanded={isPopoverOpen}
                                 >
-                                    <div>
+                                    <div className="w-full h-full rounded-full overflow-hidden">
                                         <Image
                                             src={placeholderImage}
-                                            alt='Profile'
-                                            fill="cover"
+                                            alt="Profile"
+                                            className="object-cover"
+                                            width={40}
+                                            height={40}
                                         />
                                     </div>
-                                    {/* <ChevronDown className="text-white" size={16} /> */}
                                 </button>
-
                                 {isPopoverOpen && (
                                     <div className="absolute right-0 mt-2 w-56 bg-white border border-gray-300 rounded-lg z-10">
                                         <div className="p-4">
