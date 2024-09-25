@@ -23,7 +23,7 @@ export default function SideBar() {
             {menuItems.map((item, index) => (
                 <div
                     key={index}
-                    className="flex items-center space-x-2 w-full p-2 rounded-md transition-colors duration-300 ease-in hover:bg-gray-200"
+                    className="flex items-center space-x-2 w-full p-2 rounded-md hover:bg-purple-100"
                 >
                     {item.icon}
                     {isHover ? (
