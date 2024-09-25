@@ -31,7 +31,7 @@ export default function SideBar() {
                             {item.name}
                         </span>
                     ) : (
-                        ''
+                            ''
                     )}
                 </div>
             ))}
