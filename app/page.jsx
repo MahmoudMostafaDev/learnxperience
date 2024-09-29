@@ -1,16 +1,12 @@
-import SideBar from "./components/SideBar";
-
-export default function Home() {
+import SideBar from './components/SideBar';
+import Hero from './components/Hero';
+const page = () => {
   return (
-    <div className="relative flex min-h-screen">
-      <div className="">
-        <SideBar />
-      </div>
-      <div className="flex-1 p-4">
-        {Array.from({ length: 40 }, (_, index) => (
-          <h1 key={index}>Scroll Test</h1>
-        ))}
-      </div>
-    </div>
+    <main className='relative flex min-h-screen'>
+      <SideBar />
+      <Hero />
+    </main>
   );
-}
+};
+
+export default page;
