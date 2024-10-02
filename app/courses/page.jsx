@@ -1,5 +1,5 @@
 import React from 'react'
-import Courses from '../components/Courses'
+import CourseListing from '../components/CoursesListing'
 import CourseBlocks from '../components/CourseBlocks'
 import SideBar from '../components/SideBar'
 
@@ -9,9 +9,9 @@ export default function page() {
             <div>
                 <SideBar />
             </div>
-            <Courses>
+            <CourseListing>
                 <CourseBlocks />
-            </Courses>
+            </CourseListing>
         </div>
     )
 }
