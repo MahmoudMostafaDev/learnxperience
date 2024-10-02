@@ -13,7 +13,7 @@ const SideBar = () => {
           flex flex-col
           transition-all duration-300 ease-in-out
           ${isExpanded ? 'w-64' : 'w-20'}
-          bg-gray-900 text-white
+          bg-gray-900 text-white h-full absolute left-0 top-0
         `}
         onMouseEnter={() => setIsExpanded(true)}
         onMouseLeave={() => setIsExpanded(false)}

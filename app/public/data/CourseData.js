@@ -1,4 +1,4 @@
-import SampleImage from "../images/sampleImage.jpg"
+import SampleImage from "../../../public/images/sampleImage.jpg"
 
 export const courseData = [
     {
