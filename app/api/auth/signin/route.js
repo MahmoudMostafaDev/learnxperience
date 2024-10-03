@@ -1,4 +1,5 @@
 import clientPromise from '../../../lib/mongodb'
+import { compare } from 'bcryptjs';
 
 export async function POST(req) {
   const { email, password } = await req.json();
@@ -14,16 +15,10 @@ export async function POST(req) {
     const usersCollection = db.collection('users');
 
     const user = await usersCollection.findOne({ email });
-    if (!user) {
-        console.log(`Login attempt failed: Invalid credentials for email ${email}`);
+    if (!user || !(await compare(password, user.password))) {
+        console.log(`Login attempt failed: Invalid credentials.`);
         return new Response(JSON.stringify({ error: 'Invalid credentials' }), { status: 401 });
       }
-
-    const isMatch = (password===user.password)
-    if (!isMatch) {
-        console.log(`Login attempt failed: Invalid credentials for email ${email}`);
-        return new Response(JSON.stringify({ error: 'Invalid credentials' }), { status: 401 });
-    }
 
     console.log(`User logged in successfully: ${email}`);
     return new Response(JSON.stringify({ message: 'Login successful' }), { status: 200 });
