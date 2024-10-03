@@ -1,10 +1,5 @@
-import SideBar from './components/SideBar';
 import Hero from './components/Hero';
-import { Gamepad2, GraduationCap, Trophy, Users, Book, Code, ChartBar } from "lucide-react"
-
-
-
-
+import { Gamepad2, GraduationCap, Users, Book, Code, ChartBar } from "lucide-react"
 
 const page = () => {
   const courses = [
