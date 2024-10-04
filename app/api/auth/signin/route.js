@@ -1,8 +1,8 @@
 import clientPromise from '../../../lib/mongodb';
 import { compare } from 'bcryptjs';
-import jwt from 'jsonwebtoken';
+import { SignJWT } from 'jose';
 
-const SECRET_KEY = '00b4ffa801a1d4ce4302295b21b0ef918dd637573aa363d057d88f91b736875a122ab17f33ce5e173a92c5e475eed103e1e871794e1b2e68f2a8ba27419b2df0'; 
+const SECRET_KEY = new TextEncoder().encode(process.env.JWT_SECRET); 
 
 export async function POST(req, res) {
   
@@ -24,21 +24,22 @@ export async function POST(req, res) {
         return new Response(JSON.stringify({ error: 'Invalid credentials' }), { status: 401 });
       }
     
-    const token = jwt.sign(
-      { email: user.email }, 
-      SECRET_KEY, 
-      { expiresIn: '1h' } 
-    );
+      const token = await new SignJWT({ email })
+      .setProtectedHeader({ alg: 'HS256' })
+      .setIssuedAt()
+      .setExpirationTime('1h') 
+      .sign(SECRET_KEY);
     
-    console.log(`User logged in successfully: ${email}`);
-    return new Response(JSON.stringify({ 
-      message: 'Login successful' 
-    }), { 
-      status: 200, 
-      headers: {
-        'Set-Cookie': `token=${token}; HttpOnly; Secure; SameSite=Strict; Path=/; Max-Age=3600`,
-      }
-    });
+      console.log(`User logged in successfully: ${email}`);
+      
+      return new Response(JSON.stringify({ 
+        message: 'Login successful' 
+      }), { 
+        status: 200, 
+        headers: {
+          'Set-Cookie': `token=${token}; HttpOnly; Secure; SameSite=Strict; Path=/; Max-Age=3600`,
+        }
+      });
   } catch (error) {
     console.error(`Login error: ${error.message}`);
     return new Response(JSON.stringify({ error: 'Server error' }), { status: 500 });
