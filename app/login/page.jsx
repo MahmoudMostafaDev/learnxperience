@@ -21,9 +21,7 @@ function Login() {
         },
         body: JSON.stringify({ email, password }),
       });
-  
-      const data = await response.json();
-  
+    
       if (response.ok) {
         setMessage('Login successful! Redirecting...');
         router.push('/dashboard');

@@ -1,4 +1,5 @@
-import clientPromise from '../../../lib/mongodb'
+import clientPromise from '../../../lib/mongodb';
+import { hash } from 'bcryptjs';
 
 export async function POST(req) {
   const { name, email, password } = await req.json();
@@ -22,7 +23,7 @@ export async function POST(req) {
     await usersCollection.insertOne({
       name,
       email,
-      password,
+      password: await hash(password, 10),
     });
     console.log(`User signed up successfully: ${email}`);
 
