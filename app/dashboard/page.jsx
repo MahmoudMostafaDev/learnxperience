@@ -1,5 +1,6 @@
-import React from 'react'
-import SideBar from '../components/SideBar'
+'use client';
+import React from 'react';
+import SideBar from '../components/SideBar';
 
 function Dashboard() {
   return (
@@ -11,7 +12,7 @@ function Dashboard() {
         </div>
       </main>
     </div>
-  )
+  );
 }
 
-export default Dashboard
+export default Dashboard;
