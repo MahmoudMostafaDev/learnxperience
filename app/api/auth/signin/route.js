@@ -1,6 +1,11 @@
-import clientPromise from '../../../lib/mongodb'
+import clientPromise from '../../../lib/mongodb';
+import { compare } from 'bcryptjs';
+import { SignJWT } from 'jose';
 
-export async function POST(req) {
+const SECRET_KEY = new TextEncoder().encode(process.env.JWT_SECRET); 
+
+export async function POST(req, res) {
+  
   const { email, password } = await req.json();
 
   if ( !email || !password) {
@@ -14,19 +19,27 @@ export async function POST(req) {
     const usersCollection = db.collection('users');
 
     const user = await usersCollection.findOne({ email });
-    if (!user) {
-        console.log(`Login attempt failed: Invalid credentials for email ${email}`);
+    if (!user || !(await compare(password, user.password))) {
+        console.log(`Login attempt failed: Invalid credentials.`);
         return new Response(JSON.stringify({ error: 'Invalid credentials' }), { status: 401 });
       }
-
-    const isMatch = (password===user.password)
-    if (!isMatch) {
-        console.log(`Login attempt failed: Invalid credentials for email ${email}`);
-        return new Response(JSON.stringify({ error: 'Invalid credentials' }), { status: 401 });
-    }
-
-    console.log(`User logged in successfully: ${email}`);
-    return new Response(JSON.stringify({ message: 'Login successful' }), { status: 200 });
+    
+      const token = await new SignJWT({ email })
+      .setProtectedHeader({ alg: 'HS256' })
+      .setIssuedAt()
+      .setExpirationTime('1h') 
+      .sign(SECRET_KEY);
+    
+      console.log(`User logged in successfully: ${email}`);
+      
+      return new Response(JSON.stringify({ 
+        message: 'Login successful' 
+      }), { 
+        status: 200, 
+        headers: {
+          'Set-Cookie': `token=${token}; HttpOnly; Secure; SameSite=Strict; Path=/; Max-Age=3600`,
+        }
+      });
   } catch (error) {
     console.error(`Login error: ${error.message}`);
     return new Response(JSON.stringify({ error: 'Server error' }), { status: 500 });

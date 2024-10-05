@@ -9,10 +9,7 @@ if (!process.env.MONGODB_URI) {
   throw new Error('Please add your MongoDB URI to environment variables');
 }
 
-client = new MongoClient(uri, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+client = new MongoClient(uri);
 
 clientPromise = client.connect();
 
