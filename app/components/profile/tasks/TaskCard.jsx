@@ -1,6 +1,6 @@
 import React from "react";
 import right from "@/public/images/right.png";
-import x from "@/public/images/x.png";
+import x from "@/public/images/X.png";
 import Image from "next/image";
 
 export default function TaskCard({
